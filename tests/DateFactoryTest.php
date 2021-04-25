@@ -32,38 +32,6 @@ class DateFactoryTest extends TestCase implements BuffaloToolsDateSettingsInterf
   public function setUp() : void
   {
     $this->factory = $this->createInstance();
-    
-    
-    $factory = new DateFactory( 'America/New_York' );
-    
-    //..Retrieve "now" in UTC
-    print_r( $factory->now());
-    /* 
-    DateTimeImmutable Object
-    (
-        [date] => 2021-04-25 16:22:07.073529
-        [timezone_type] => 3
-        [timezone] => UTC
-    )
-    */
-    
-    
-    //..Retrieve "now" in some time zone relative to UTC.
-    //..Converts UTC to the supplied time zone 
-    print_r( $factory->now( 'America/New_York' ));
-    /*
-    DateTimeImmutable Object
-    (
-        [date] => 2021-04-25 12:22:07.073529
-        [timezone_type] => 3
-        [timezone] => America/New_York
-    )
-    */
-    
-    die;
-    
-    
-  
   }
   
   
@@ -144,37 +112,6 @@ class DateFactoryTest extends TestCase implements BuffaloToolsDateSettingsInterf
     $dt = $this->factory->createDateTime( self::DATE_TEST );
     $this->assertEquals( $utc->format( self::DATE_FORMAT ), $dt->format( self::DATE_FORMAT ));
     $this->assertEquals( $utc->getTimezone()->getName(), $dt->getTimezone()->getName());
-  }
-  
-  
-  /**
-   * Tests: createLocalDateTime()
-   * 
-   * This simply calls createDateTime() with the local timezone instead of utc.
-   * 
-   * @return void
-   */
-  public function testCreateLocalDateTime() : void
-  {
-    $local = ( new DateTime( self::DATE_TEST, new DateTimeZone( self::DATE_TIMEZONE )));
-    $dt = $this->factory->createLocalDateTime( self::DATE_TEST, self::DATE_TIMEZONE );
-    $this->assertEquals( $local->format( self::DATE_FORMAT ), $dt->format( self::DATE_FORMAT ));
-    $this->assertEquals( $local->getTimezone()->getName(), $dt->getTimezone()->getName());
-    
-    
-    $local = ( new DateTime( self::DATE_TEST2, new DateTimeZone( self::DATE_TIMEZONE )));
-    $dt = $this->factory->createLocalDateTime( self::DATE_TEST2, self::DATE_TIMEZONE );
-    $this->assertEquals( $local->format( self::DATE_FORMAT2 ), $dt->format( self::DATE_FORMAT2 ));
-    $this->assertEquals( $local->getTimezone()->getName(), $dt->getTimezone()->getName());
-    $this->assertEquals( 'Z', $dt->getTimezone()->getName());
-    
-    $this->expectException( \Exception::class );    
-    $this->factory->createDateTime( 'invalid' );
-    
-    $utc = ( new DateTime( self::DATE_TEST, new DateTimeZone( self::UTC_TIMEZONE )));
-    $dt = $this->factory->createLocalDateTime( self::DATE_TEST );
-    $this->assertEquals( $utc->format( self::DATE_FORMAT ), $dt->format( self::DATE_FORMAT ));
-    $this->assertEquals( $utc->getTimezone()->getName(), $dt->getTimezone()->getName());    
   }
   
   
