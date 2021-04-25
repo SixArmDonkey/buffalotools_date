@@ -1,5 +1,5 @@
 {
-	"name"        : "buffalokiwi/buffalotools_date",
+	"name"        : "buffalokiwi/buffalotools/date",
 	"description" : "Simple date wrapper for PHP 7.4",
   "homepage"    : "https://github.com/SixArmDonkey/buffalotools_date",
 	"license"     : "MIT",
