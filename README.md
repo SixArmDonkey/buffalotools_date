@@ -10,7 +10,7 @@ MIT License
 ## Installation
 
 ```
-composer require buffalokiwi/buffalotools_date
+composer require buffalokiwi/buffalotools/date
 ```
   
 ---
