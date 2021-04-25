@@ -60,7 +60,6 @@ class DateTimeWrapper implements IDateTime
   {    
     $z = new DateTimeZone( 'UTC' );
     $tz = $utcDate->getTimezone();
-    echo $tz->getName();
     $isUTC = ( $tz->getName() == 'UTC' || $tz->getName() == 'Z' );
     
     if ( $isUTC )
