@@ -90,6 +90,6 @@ class DateTimeWrapperTest extends TestCase implements BuffaloToolsDateSettingsIn
    */  
   public function testToString() : void
   {
-    $this->assertEquals( $this->utc->format( self::DATE_FORMAT ), $this->instance->getUTC()->format( self::DATE_FORMAT ));
+    $this->assertEquals( $this->utc->format( 'Y-m-d\TH:i:s\Z' ), (string)$this->instance );
   }
 }

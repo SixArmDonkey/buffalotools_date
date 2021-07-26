@@ -105,6 +105,6 @@ class DateTimeWrapper implements IDateTime
    */
   public function __toString() : string 
   {
-    return $this->utcDate->format( $this->format );
+    return $this->utcDate->format( $this->toStringFormat );
   }
 }
